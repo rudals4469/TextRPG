@@ -12,7 +12,7 @@ namespace TextRPG
 
         public Store() // 생성자
         {
-            Item = new List<Item> // 음 어 아 예 배열로 어캐 바꾸냐 ;;
+            Item = new List<Item> 
             {
                 // 아이템 추가
                 new Item(1,"수련자의 갑옷     ",  "방어력 +3  | 수련에 도움을 주는 갑옷이다.\t\t\t",0 ,3,1000,ARMOR),
@@ -30,7 +30,6 @@ namespace TextRPG
     } // 상점 클래스
     public class Player
     {
-        // 플레이어 정보도 클래스로 빼자
         // 레벨, 이름 직업, 공격력, 방어력, 체력, 골드 , 인벤토리, 무기공격력, 무기방어력, 경험치, 레벨업경험치
         public int level { get; set; }
         public string name { get; set; }
@@ -82,7 +81,7 @@ namespace TextRPG
                 WeaponDef -= item.ItemDefense;
             }
         }
-
+        // 레벨업
         public void LevelUp()
         {
             if(LevelEXP == EXP)
@@ -148,7 +147,7 @@ namespace TextRPG
                     {
                         if(player.Gold >= 500)
                         {
-                            player.HP = 100; // 체력을 몇 채워야 될질 모르겠넹 
+                            player.HP = 100; 
                             player.Gold -= 500;
                             Console.WriteLine("휴식을 완료했습니다.");
                             Console.ReadKey();
@@ -182,7 +181,7 @@ namespace TextRPG
                 Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.\n");
                 Console.WriteLine("[보유 골드]");
                 Console.WriteLine($"{player.Gold} G");
-                Console.WriteLine("\n[아이템 목록]\n"); // 인벤토리랑 똑같이 불러오면 되지않나 이 게임은?
+                Console.WriteLine("\n[아이템 목록]\n")
 
 
                 for (int i = 0; i < player.Inventory.Count; i++) // 아이템 표시
@@ -208,9 +207,9 @@ namespace TextRPG
                     {
                         Item sellItem = player.Inventory[Input - 1];
                         sellItem.IsPruchase = false;
-                        player.UnEuqipItem(sellItem); // 장착 해제 이걸 못해서 시간을 얼마나 쓴겨..
+                        player.UnEuqipItem(sellItem); 
                         player.Inventory.Remove(sellItem);
-                        player.Gold += (int)(sellItem.Price * 0.85f); // 일단 정가로 팔게 냅둬봐
+                        player.Gold += (int)(sellItem.Price * 0.85f);
                     }
                     else
                     {
@@ -232,7 +231,6 @@ namespace TextRPG
         }
         static public void BuyItem(Player player)
         {
-            // 사는 알고리즘 만들고
             while (true)
             {
                 Console.Clear();
@@ -299,10 +297,8 @@ namespace TextRPG
 
             for (int i = 0; i < EquipStore.Item.Count; i++)
             {
-                Console.WriteLine($"- {EquipStore.Item[i].Id} {EquipStore.Item[i].ItemName}| {EquipStore.Item[i].Tooltip} | {(EquipStore.Item[i].IsPruchase ? "구매 완료" : EquipStore.Item[i].Price)}");
-
-                // 구매여부를 어떻게 띄우지
-                // 플래그가 트루일 때 - 구매완료 표시를 띄우면 되나 근데 왜 안들어가지..? -> 쓸데 없이 "가 하나더있었네 ㅠ
+                Console.WriteLine($"- {EquipStore.Item[i].Id} {EquipStore.Item[i].ItemName}| {EquipStore.Item[i].Tooltip} " +
+                    $"| {(EquipStore.Item[i].IsPruchase ? "구매 완료" : EquipStore.Item[i].Price)}");
             }
 
             Console.WriteLine("\n1. 아이템 구매");
@@ -353,7 +349,7 @@ namespace TextRPG
                 {
                     Console.WriteLine($"- {(player.Inventory[i].IsEquip ? "[E]" : " ")} " +
                         $"{i+1} {player.Inventory[i].ItemName} | {player.Inventory[i].Tooltip} ");
-                    // 맨앞에 [E] 판정문 달아야돼
+                    // 맨앞에 [E] 판정문
                 }
 
                 Console.WriteLine("\n0. 나가기");
@@ -374,8 +370,7 @@ namespace TextRPG
                         {
                             if (player.Inventory[i].type == selectItem.type && !selectItem.IsEquip) // 타입이 같고, 끼고 있으면
                             {
-                                player.UnEuqipItem(player.Inventory[i]); // 내 인벤토리에 있는 아이탬을 다 끈다.
-                                // 장착도 안되있는데 끄니깐 스텟이 이상해지는구나.
+                                player.UnEuqipItem(player.Inventory[i]); // 내 인벤토리에 있는 아이탬을 전체 장착해제.
                             }
                         }
 
@@ -419,10 +414,10 @@ namespace TextRPG
             {
                 Console.WriteLine($"- {(player.Inventory[i].IsEquip ? "[E]" : " ")} " +
                     $"{i + 1} {player.Inventory[i].ItemName} | {player.Inventory[i].Tooltip} ");
-                // 맨앞에 [E] 판정문 달아야돼
+                // 맨앞에 [E] 판정문
             }
             Console.WriteLine("\n1. 장착 관리");
-            Console.WriteLine("0. 나가기"); // 선택지 2개라 굳이 스위치문 쓰지 않고 if문으로 해결
+            Console.WriteLine("0. 나가기");
 
             Console.WriteLine("\n원하시는 행동을 입력해주세요.");
             Console.Write(">> ");
@@ -455,11 +450,11 @@ namespace TextRPG
             Console.WriteLine("캐릭터의 정보가 표시됩니다.\n");
             Console.WriteLine($"Lv. {player.level}");
             Console.WriteLine($"Chad ( {player.Job}" + " )");
-            Console.WriteLine($"공격력 : {player.Att + player.WeaponAtt} (+{player.WeaponAtt})");  // 짜피 도전 기능 하면서 건들여야 될거같은데 나중에 한번에 수정하시져
+            Console.WriteLine($"공격력 : {player.Att + player.WeaponAtt} (+{player.WeaponAtt})"); // 캐릭의 기본 공격력 + 아이탬 공격력 
             Console.WriteLine($"방어력 : {player.Def + player.WeaponDef} (+{player.WeaponDef})");
             Console.WriteLine($"체 력 : {player.HP}");
             Console.WriteLine($"Gold : {player.Gold}" + " G\n");
-            Console.WriteLine("0. 나가기"); // 여기서 나갈려면 메인 함수를 호출 해야되는데? 되나?
+            Console.WriteLine("0. 나가기");
             Console.WriteLine("\n원하시는 행동을 입력해주세요.");
             Console.Write(">> ");
 
@@ -520,11 +515,11 @@ namespace TextRPG
                 Console.WriteLine("축하합니다!!");
 
                 if(RecommendDef == 5)
-                    Console.WriteLine("쉬운 던전을 클리어 하셨습니다.\n"); // 어느 난이도 선택해도 쉬운으로 출력되요지금 그냥 if문 걸어서 나눌까
+                    Console.WriteLine("쉬운 던전을 클리어 하셨습니다.\n");
                 else if(RecommendDef == 11)
                     Console.WriteLine("일반 던전을 클리어 하셨습니다.\n");
                 else if (RecommendDef == 17)
-                    Console.WriteLine("어려운 던전을 클리어 하셨습니다.\n"); // 더 좋은 방법이 있을거 같은디.. enum을 어떻게 못써먹나
+                    Console.WriteLine("어려운 던전을 클리어 하셨습니다.\n"); // 더 좋은 방법이 있을거 같은디..
 
 
                 Console.WriteLine("[탐험 결과]");
@@ -655,10 +650,6 @@ namespace TextRPG
             Player player = new Player();
             mainMenu(player);
 
-            // dadfafasdfadf
         }
     }
 }
-
-
-// 내가 저장할 정보는 유저 정보, 상점의 아이템 정보 2개만 저장해도 되는데
