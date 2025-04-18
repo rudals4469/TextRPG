@@ -492,20 +492,12 @@ namespace TextRPG
             int beforeHP = player.HP;
             float beforeGold = player.Gold;
 
-            if (player.Def < RecommendDef)
+            if (player.Def < RecommendDef && FailProbability < 4)
             {
                 Console.Clear();
                 Console.WriteLine("던전 실패");
-
-                if (FailProbability < 4)
-                {
-                    player.HP -= HPrandNumber + player.Def;
-                    Console.WriteLine($"체력 {beforeHP} -> {player.HP} ");
-                }
-                else
-                {
-                    Console.WriteLine($"체력 {player.HP} ");
-                }
+                player.HP -= HPrandNumber + player.Def;
+                Console.WriteLine($"체력 {beforeHP} -> {player.HP} ");
 
                 Console.WriteLine("\n0. 나가기");
                 Console.WriteLine("\n원하시는 행동을 입력해주세요.");
@@ -662,6 +654,8 @@ namespace TextRPG
             Store gameStore = new Store();
             Player player = new Player();
             mainMenu(player);
+
+            // dadfafasdfadf
         }
     }
 }

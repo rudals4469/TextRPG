@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rudal\\source\\repos\\TextRPG\\TextRPG\\TextRPG.csproj": {}
+    "C:\\Users\\rudal\\Documents\\GitHub\\TextRPG\\TextRPG\\TextRPG.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rudal\\source\\repos\\TextRPG\\TextRPG\\TextRPG.csproj": {
+    "C:\\Users\\rudal\\Documents\\GitHub\\TextRPG\\TextRPG\\TextRPG.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rudal\\source\\repos\\TextRPG\\TextRPG\\TextRPG.csproj",
+        "projectUniqueName": "C:\\Users\\rudal\\Documents\\GitHub\\TextRPG\\TextRPG\\TextRPG.csproj",
         "projectName": "TextRPG",
-        "projectPath": "C:\\Users\\rudal\\source\\repos\\TextRPG\\TextRPG\\TextRPG.csproj",
+        "projectPath": "C:\\Users\\rudal\\Documents\\GitHub\\TextRPG\\TextRPG\\TextRPG.csproj",
         "packagesPath": "C:\\Users\\rudal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rudal\\source\\repos\\TextRPG\\TextRPG\\obj\\",
+        "outputPath": "C:\\Users\\rudal\\Documents\\GitHub\\TextRPG\\TextRPG\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rudal\\AppData\\Roaming\\NuGet\\NuGet.Config",
